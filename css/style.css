@@ -1,0 +1,741 @@
+/* =========================
+Reset 
+========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+input,
+button {
+  font-family: inherit;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+body {
+  margin: 0;
+}
+
+/* =========================
+Variables
+========================= */
+:root {
+  /* textXxl: 32px → 36px */
+  --textXxl: clamp(3.2rem, 2vw, 3.6rem);
+  /* textXl: 24px → 28px */
+  --textXl: clamp(2.4rem, 1.8vw, 2.8rem);
+  /* textLg: 18px → 20px */
+  --textLg: clamp(1.8rem, 1.4vw, 2rem);
+  /* textMd: 14px → 16px */
+  --textMd: clamp(1.4rem, 1.8vw, 1.6rem);
+  /* textSm: 12px → 14px */
+  --textSm: clamp(1.2rem, 1.4vw, 1.4rem);
+  /* textXs 9px → 11px */
+  --textXs: clamp(0.9rem, 1vw, 1.1rem);
+}
+
+:root {
+  --lhXxl: clamp(3.8rem, 2vw, 4.3rem);
+  --lhXl: clamp(3.2rem, 1.8vw, 3.6rem);
+  --lhLg: clamp(2.6rem, 1.4vw, 2.9rem);
+  --lhMd: clamp(2.2rem, 0.8vw, 2.5rem);
+  --lhSm: clamp(2rem, 0.6vw, 2.2rem);
+  --lhXs: clamp(1.2rem, 0.3vw, 1.4rem);
+}
+
+:root {
+  /* Primary */
+  --color-white: #fff;
+  --color-black: #3f4645;
+
+  /* Neutral */
+  --color-bg: #d4dad9;
+  --color-btn: #e9edec;
+
+  /* Accent (GreenHueC) */
+  --color-green-100: #f3f6f3;
+  --color-green-200: #eef2ee;
+  --color-green-300: #e8ede8;
+  --color-green-400: #dce5dc;
+  --color-green-500: #c5d3c5;
+  --color-green-600: #a7b6a7;
+  --color-green-700: #4e5d4e;
+  --color-green-800: #304030;
+
+  /* Accent Transparent (GreenHueC with opacity) */
+  --color-green-100-rgb: 243, 246, 243;
+  --color-green-100-80: rgb(var(--color-green-100-rgb), 0.8);
+  /* Black Transparent */
+  --color-black-rgb: 0, 0, 0;
+  --color-black-40: rgba(var(--color-black-rgb), 0.4);
+}
+
+/* =========================
+Base
+========================= */
+html {
+  font-size: 10px;
+}
+body {
+  font-weight: 400;
+  font-family: Roboto, "Noto Sans JP", sans-serif;
+  overflow-x: hidden;
+}
+html,
+body {
+  background-color: var(--color-bg);
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: normal;
+  color: var(--color-black);
+}
+oter {
+  background-color: var(--color-green-200);
+}
+input,
+textarea {
+  padding: 8px 24px;
+}
+
+/* =========================
+Layout
+========================= */
+
+/* 共通レイアウト */
+.pageHeader,
+.footerContainer {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding-inline: clamp(32px, 6vw, 80px);
+}
+.pageHeader {
+  padding-block: 32px;
+}
+.footerContainer {
+  padding-block: 80px;
+}
+@media screen and (width <= 767px) {
+  .footerContainer {
+    flex-direction: column;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  margin-bottom: clamp(64px, 8vw, 140px);
+  margin-inline: auto;
+  padding-inline: clamp(32px, 6vw, 80px);
+  padding-block: clamp(32px, 6vw, 80px);
+}
+
+/* mvレイアウト */
+.mvSection {
+  position: relative;
+  width: 100%;
+  height: clamp(30vh, 50vh, 80vh);
+  margin-bottom: clamp(120px, 15vw, 200px);
+  overflow: hidden;
+}
+.mvSection img {
+  transform: translateX(20%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mvSection p {
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  padding: clamp(32px, 6vw, 120px);
+}
+@media screen and (width <= 767px) {
+  .mvSection img {
+    transform: none;
+  }
+}
+
+/* aboutSectionレイアウト */
+.aboutSection {
+  max-width: 1280px;
+}
+.aboutContainer {
+  display: flex;
+  position: relative;
+  justify-content: end;
+  align-items: center;
+}
+
+/* aboutInfoレイアウト */
+.aboutInfo {
+  display: flex;
+  z-index: 2;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(48px, 8vw, 128px);
+  width: 70%;
+  padding: clamp(120px, 15vw, 200px) clamp(32px, 8vw, 128px);
+}
+.aboutLeadContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.aboutItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* aboutImgレイアウト */
+.aboutImg {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  width: 70%;
+  height: 80%;
+  overflow: hidden;
+}
+.aboutImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (width <= 767px) {
+  .aboutContainer {
+    justify-content: center;
+    margin-top: 16px;
+  }
+  .aboutImg {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 120%;
+  }
+}
+
+/* worksSectionレイアウト */
+.worksSection {
+  container-type: inline-size;
+  container-name: worksSection;
+}
+.worksCardContainer {
+  display: grid;
+  gap: clamp(32px, 5vw, 64px);
+  cursor: pointer;
+  grid-template-columns: repeat(3, 1fr);
+}
+@container worksSection (max-width: 600px) {
+  .worksCardContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* philosophySectionレイアウト */
+.philosophySection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  margin-bottom: clamp(64px, 8vw, 140px);
+  margin-inline: auto;
+}
+.philosophyContainer {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 200px;
+  width: 100%;
+}
+.philosophyInfo {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  gap: 32px;
+  padding: clamp(48px, 8vw, 128px);
+}
+@media screen and (max-width: 767px) {
+  .philosophyInfo {
+    width: 90%;
+  }
+}
+
+/* philosophySection背景レイアウト */
+.philosophyImg {
+  z-index: 1;
+  width: 100%;
+  height: 40vh;
+  overflow: hidden;
+}
+.philosophyImgTop img {
+  transform: translateX(15%);
+}
+.philosophyImgBottom img {
+  transform: translateX(-15%);
+}
+.philosophyImg img {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (width <= 767px) {
+  .philosophyImg {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+/* contactSectionレイアウト */
+.contactSection {
+  width: min(80%); /* ← これが最強 */
+  max-width: 1280px;
+  background-color: var(--color-green-100-80);
+}
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  width: 100%;
+}
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.formGroup input,
+.formGroup textarea {
+  width: clamp(280px, 50vw, 720px);
+}
+
+/* works.htmlのworksPanelのレイアウト */
+.worksPanel {
+  width: 100%;
+  container-type: inline-size;
+  container-name: works;
+}
+@container works (max-width: 900px) {
+  .worksCardContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@container works (max-width: 600px) {
+  .worksCardContainer {
+    grid-template-columns: 1fr;
+  }
+}
+.worksTag {
+  display: inline-block;
+  padding: 2px 6px;
+  border: 1px solid var(--color-green-600);
+  font-size: 0.75rem;
+  color: var(--color-black);
+}
+
+/* workDetailのHero画像 */
+.workDetailHero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 3 / 1.5;
+}
+.workDetailHero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9);
+}
+.workDetailHero::before {
+  position: absolute;
+  z-index: 1;
+  background: var(--color-black-20);
+  content: "";
+  inset: 0;
+}
+.workDetailMeta {
+  position: absolute;
+  top: clamp(32px, 8vw, 96px);
+  left: clamp(32px, 7vw, 80px);
+  z-index: 2;
+  padding: 8px 16px;
+  background-color: var(--color-black-40);
+  font-weight: 400;
+  color: var(--color-white);
+  opacity: 0.8;
+}
+
+/* workDetailのサムネ */
+.workDetailVisual {
+  background-color: var(--color-green-100-80);
+}
+.thumbCarousel {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 4vw, 24px);
+  padding-inline: clamp(16px, 4vw, 48px);
+  padding-block: clamp(32px, 8vw, 64px);
+}
+.thumbViewport {
+  width: 100%;
+  overflow: hidden;
+}
+.thumbTrack {
+  display: flex;
+  justify-content: center;
+  gap: clamp(16px, 4vw, 48px);
+  transition: transform 0.3s ease;
+}
+.thumbTrack img {
+  width: 160px;
+  border-radius: 4px;
+  object-fit: cover;
+  cursor: pointer;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+  aspect-ratio: 4 / 3;
+}
+.thumbTrack img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+@media (max-width: 767px) {
+  .thumbTrack img {
+    width: 120px;
+  }
+}
+
+/* workDetailのレイアウト */
+.workDetailSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+  margin-bottom: clamp(120px, 15vw, 200px);
+  margin-inline: auto;
+  padding-inline: clamp(32px, 6vw, 80px);
+  padding-block: clamp(32px, 6vw, 80px);
+}
+.workDetailHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.workDetailHeader h1 {
+  padding-bottom: 16px;
+}
+
+/* workDetailのinfoのレイアウト*/
+.workDetailInfo {
+  padding: clamp(32px, 8vw, 120px);
+  border-top: 1px solid var(--color-green-600);
+  border-bottom: 1px solid var(--color-green-600);
+}
+.workDetailList {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  row-gap: 32px;
+}
+.workDetailList dt {
+  color: var(--color-green-700);
+}
+.workDetailList dd {
+  color: var(--color-black);
+}
+
+/* PREV / NEXT ナビ */
+.workDetailNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(48px, 10vw, 128px);
+}
+
+/* footer */
+.copy {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* =========================
+Components
+========================= */
+/* logo */
+.pageLogo img,
+.footerLogo {
+  width: 10%;
+  min-width: 260px;
+}
+/* 文字裏背景色 */
+.mvSection p,
+.aboutInfo,
+.philosophyInfo {
+  background-color: var(--color-green-100-80);
+}
+
+/* worksカード */
+.worksCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(16px, 3vw, 28px);
+  padding-bottom: clamp(16px, 3vw, 28px);
+  background-color: var(--color-green-300);
+}
+.worksCardImg {
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 3/2;
+}
+.worksCardImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.worksCard h3 {
+  position: relative;
+  max-width: 20ch;
+  text-align: center;
+}
+
+/* worksページのworksカード */
+.worksCard--works {
+  gap: 12px;
+}
+.worksCardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 0 32px;
+}
+.worksCard--works .worksCard h3 {
+  width: fit-content;
+  margin-inline: 0;
+  text-align: start;
+}
+.worksTitle small {
+  display: block;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* タイトル下線アニメーション（共通） */
+.worksCard h3::after {
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentcolor;
+  opacity: 0.4;
+  transition: width 0.3s ease;
+  content: "";
+}
+.worksCard:hover .worksCard h3::after {
+  width: 40%;
+}
+
+/* worksページのタブ */
+.worksTabs {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 32px;
+  padding: 8px 32px;
+  border-bottom: 1px solid currentcolor;
+}
+.worksTab {
+  position: relative;
+  padding: 4px 0;
+  border: none;
+  background: none;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.worksTab:hover {
+  opacity: 0.75;
+}
+.worksTab.is-active {
+  color: var(--color-black); /* ← 文字色を濃くする */
+  opacity: 1;
+}
+.worksTab.is-active::after {
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110%;
+  height: 1px;
+  background-color: currentcolor;
+  content: "";
+}
+
+/* topToBtn */
+footer {
+  position: relative;
+  background-color: var(--color-green-300);
+}
+.toTopBtn {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  z-index: 2;
+  width: 50px;
+  height: 50px;
+  border-radius: 9999px;
+  background-color: var(--color-green-700);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.toTopBtn::after {
+  position: relative;
+  bottom: 12px;
+  left: 0;
+  width: 0;
+  height: 0;
+  content: "";
+  border-style: solid;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+  border-bottom: 8px solid var(--color-btn);
+  border-top: 0;
+}
+.toTopBtn.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* PREV / NEXT（高さを中央に寄せる） */
+.workDetailNav .prev,
+.workDetailNav .next {
+  position: relative;
+  color: #3f4645;
+  text-decoration: none;
+}
+.workDetailNav .prev::after,
+.workDetailNav .next::after {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background: #3f4645;
+  transition: width 0.25s ease;
+  content: "";
+}
+.workDetailNav .prev:hover::after,
+.workDetailNav .next:hover::after {
+  width: 100%;
+}
+
+/* Back To Works */
+.actionButton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 18px;
+  border: 1px solid #d0d4d3;
+  border-radius: 4px;
+  background: var(--color-green-300);
+  color: #3f4645;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+  text-decoration: none;
+}
+
+.actionButton:hover {
+  background: var(--color-green-100);
+}
+
+/* 左右ボタン */
+.thumbPrev,
+.thumbNext {
+  padding: 8px 12px;
+  border: 1px solid var(--color-black-10);
+  border-radius: 4px;
+  background: var(--color-white);
+  font-size: 14px;
+  line-height: 1;
+  color: var(--color-black-60);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+.thumbPrev:hover,
+.thumbNext:hover {
+  background: var(--color-green-100);
+  color: var(--color-black-80);
+}
+
+/* =========================
+Utility
+========================= */
+.textXxl {
+  font-size: var(--textXxl);
+  line-height: var(--lhXxl);
+}
+
+.textXl {
+  font-size: var(--textXl);
+  line-height: var(--lhXl);
+}
+
+.textLg {
+  font-size: var(--textLg);
+  line-height: var(--lhLg);
+}
+
+.textMd {
+  font-size: var(--textMd);
+  line-height: var(--lhMd);
+}
+
+.textSm {
+  font-size: var(--textSm);
+  line-height: var(--lhSm);
+}
+
+.textXs {
+  font-size: var(--textXs);
+  line-height: var(--lhXs);
+}
+
+/* =========================
+Temp
+========================= */
+.globalNav {
+  display: none;
+}
