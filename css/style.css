@@ -141,7 +141,7 @@ Layout
   flex-direction: column;
   align-items: center;
   gap: 80px;
-  margin-bottom: clamp(64px, 8vw, 140px);
+  margin-bottom: clamp(48px, 6vw, 120px);
   margin-inline: auto;
   padding-inline: clamp(32px, 6vw, 80px);
   padding-block: clamp(32px, 6vw, 80px);
@@ -152,7 +152,7 @@ Layout
   position: relative;
   width: 100%;
   height: clamp(30vh, 50vh, 80vh);
-  margin-bottom: clamp(120px, 15vw, 200px);
+  margin-bottom: clamp(48px, 6vw, 120px);
   overflow: hidden;
 }
 .mvSection img {
@@ -482,6 +482,7 @@ Layout
 .copy {
   display: block;
   margin: 0 auto;
+  padding-bottom: clamp(24px, 4vw, 48px);
   text-align: center;
 }
 
